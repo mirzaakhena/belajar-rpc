@@ -11,23 +11,23 @@ import (
 
 func main() {
 
-	kalkulator := new(model.Kalkulator)
-
-	err := rpc.Register(kalkulator)
+	err := rpc.Register(&model.Kalkulator{})
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
 	rpc.HandleHTTP()
 
-	l, e := net.Listen("tcp", ":1234")
-	if e != nil {
-		log.Fatal("listen error:", e)
+	listener, err := net.Listen("tcp", ":1234")
+	if err != nil {
+		log.Fatal("listen error:", err)
 	}
 
 	fmt.Println("server is running and waiting for request from client...")
 
-	err = http.Serve(l, nil)
+	//rpc.Accept(listener)
+
+	err = http.Serve(listener, nil)
 	if err != nil {
 		return
 	}

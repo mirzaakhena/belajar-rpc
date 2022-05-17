@@ -14,6 +14,13 @@ func main() {
 		log.Fatal("dialing:", err)
 	}
 
+	defer func(client *rpc.Client) {
+		err := client.Close()
+		if err != nil {
+
+		}
+	}(client)
+	
 	args := model.Input{Pertama: 3, Kedua: 4}
 
 	// try one of this method:

@@ -22,7 +22,7 @@ func (r Kalkulator) Jumlah(input *Input, output *Output) error {
 
 	output.Hasil = input.Pertama + input.Kedua
 
-	fmt.Printf("calculate %d=%d+%d", output.Hasil, input.Pertama, input.Kedua)
+	fmt.Printf("calculate %d=%d+%d\n", output.Hasil, input.Pertama, input.Kedua)
 
 	return nil
 }
